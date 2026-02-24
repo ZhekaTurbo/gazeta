@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>М'ясна Лавка - Classic Delicious</title>
+    <style>
+        :root {
+            --bg-dark: #121214;
+            --accent-gold: #c59d5f;
+            --accent-green: #2d5a27;
+            --text-light: #e0d5c1;
+            --card-bg: #d9d4c7;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: radial-gradient(circle, #1a1a1c 0%, #0d0d0e 100%);
+            border: 1px solid #333;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Декоративные рамки как на фоне бургера */
+        .background-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 20px solid transparent;
+            border-image: radial-gradient(circle, #222, transparent) 1;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .logo-circle {
+            width: 120px;
+            height: 120px;
+            background: #111;
+            border: 3px solid var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .logo-text {
+            color: white;
+            font-weight: bold;
+            line-height: 1.1;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        .date-info {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .promo-banner {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Сетка товаров */
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            background-color: #444; /* Линии разделения */
+            border-top: 2px solid #444;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 250px;
+        }
+
+        .product-image {
+            max-width: 90%;
+            height: auto;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+        }
+
+        /* Стили ценника в стиле бургера */
+        .price-tag {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .discount {
+            background: var(--accent-green);
+            color: white;
+            padding: 2px 8px;
+            font-size: 12px;
+            border-radius: 4px;
+            margin-bottom: 4px;
+        }
+
+        .price-btn {
+            background: linear-gradient(to bottom, #7a4a2a, #4a2c18);
+            color: var(--accent-gold);
+            padding: 8px 15px;
+            border-radius: 8px 8px 0 8px;
+            font-weight: bold;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            border: 1px solid #3d2414;
+        }
+
+        footer {
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: var(--accent-gold);
+        }
+
+        .order-now {
+            background: linear-gradient(180deg, #e6b97a 0%, #c59d5f 100%);
+            color: #331f05;
+            padding: 10px 25px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(197, 157, 95, 0.4);
+        }
+
+        @media (max-width: 480px) {
+            .products-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="background-overlay"></div>
+    
+    <header>
+        <div class="logo-circle">
+            <div class="logo-text">М'ЯСНА<br>ЛАВКА</div>
+        </div>
+        <div class="date-info">№1 з 19.02.2026 до 26.02.2026</div>
+        <div class="promo-banner">Якість, яку варто спробувати</div>
+    </header>
+
+    <main class="products-grid">
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150x100?text=Ковбаса" alt="Ковбаса" class="product-image">
+            <div class="price-tag">
+                <div class="price-btn">145 грн</div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150x100?text=Сало" alt="Сало" class="product-image">
+            <div class="price-tag">
+                <div class="price-btn">180 грн</div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150x100?text=М'ясо" alt="М'ясо" class="product-image">
+            <div class="price-tag">
+                <div class="discount">-47%</div>
+                <div class="price-btn">105 грн</div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150x100?text=Шинка" alt="Шинка" class="product-image">
+            <div class="price-tag">
+                <div class="price-btn">210 грн</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div>www.meat-shop.com</div>
+        <a href="#" class="order-now">Order Now</a>
+        <div>+123-456-789</div>
+    </footer>
+</div>
+
+</body>
+</html>
