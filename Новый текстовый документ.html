@@ -3,105 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>М'ясна Лавка Premium</title>
+    <title>М'ясна Лавка — Premium Edition</title>
     <style>
+        /* Переменные стиля "Бургер" */
+        :root {
+            --bg-dark: #0f0f11;
+            --bg-glow: #222226;
+            --gold: #d4a356;
+            --meat-brown: #3d2414;
+            --leaf-green: #1b4332;
+            --paper: #e3ddd3;
+        }
+
         body {
             margin: 0;
+            padding: 0;
             background-color: #000;
-            color: #f0ede5;
-            font-family: 'Segoe UI', sans-serif;
+            color: #fff;
+            font-family: 'Segoe UI', Roboto, sans-serif;
             display: flex;
             justify-content: center;
-            padding: 20px;
         }
-        .container {
+
+        .site-container {
             width: 100%;
             max-width: 600px;
-            background: radial-gradient(circle, #252528 0%, #0f0f11 100%);
-            border: 1px solid #333;
-            overflow: hidden;
-            box-shadow: 0 0 40px rgba(0,0,0,0.8);
+            background: radial-gradient(circle, var(--bg-glow) 0%, var(--bg-dark) 100%);
+            min-height: 100vh;
+            border: 1px solid #222;
+            box-shadow: 0 0 50px rgba(0,0,0,1);
         }
+
+        /* Шапка */
         header {
             text-align: center;
-            padding: 40px 20px;
-            background: url('https://www.transparenttextures.com/patterns/black-linen.png');
+            padding: 50px 20px;
+            position: relative;
         }
-        .logo {
-            border: 2px solid #d4a356;
+
+        .logo-placeholder {
+            width: 110px;
+            height: 110px;
+            border: 2px solid var(--gold);
             border-radius: 50%;
-            width: 100px; height: 100px;
-            display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 15px;
-            background: rgba(0,0,0,0.5);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.4);
+            box-shadow: 0 0 20px rgba(212, 163, 86, 0.2);
         }
-        .logo span { font-weight: bold; color: #fff; font-size: 14px; text-transform: uppercase; }
-        .promo-bar {
-            background-color: #1b4332;
-            color: white;
-            padding: 12px;
-            text-align: center;
+
+        .logo-text {
+            font-size: 14px;
             font-weight: bold;
+            letter-spacing: 1px;
+            color: #fff;
             text-transform: uppercase;
         }
+
+        .date-badge {
+            color: var(--gold);
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            opacity: 0.8;
+        }
+
+        .promo-banner {
+            background: var(--leaf-green);
+            padding: 15px;
+            font-weight: bold;
+            font-size: 18px;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Сетка без внешних картинок */
         .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1px;
-            background: #333;
+            gap: 2px;
+            background: #2a2a2a; /* Цвет линий разделения */
         }
-        .card {
-            background: #e3ddd3;
-            padding: 30px 10px;
-            text-align: center;
+
+        .item {
+            background: var(--paper);
+            height: 280px;
             position: relative;
-        }
-        .card img { max-width: 80%; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3)); }
-        .price {
-            position: absolute;
-            bottom: 10px; right: 10px;
-            background: #3d2414;
-            color: #d4a356;
-            padding: 5px 12px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        footer {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            padding: 30px 20px;
-            background: #0f0f11;
+            justify-content: center;
         }
-        .btn {
+
+        /* Заглушка вместо фото товара */
+        .image-box {
+            width: 120px;
+            height: 100px;
+            background: linear-gradient(135deg, #ccc, #aaa);
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .image-box::after {
+            content: "PRODUCT";
+            position: absolute;
+            bottom: -20px;
+            left: 0; width: 100%;
+            text-align: center;
+            font-size: 10px;
+            color: #888;
+        }
+
+        /* Ценник в стиле бургера */
+        .price-tag {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: var(--meat-brown);
+            color: var(--gold);
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            box-shadow: 2px 4px 10px rgba(0,0,0,0.3);
+            border: 1px solid #2a180d;
+        }
+
+        .discount {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--leaf-green);
+            color: white;
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        /* Футер */
+        footer {
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .order-button {
             background: linear-gradient(180deg, #f1c47f 0%, #d4a356 100%);
             color: #2b1d0e;
-            padding: 10px 20px;
-            border-radius: 20px;
+            padding: 12px 40px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
             text-transform: uppercase;
+            box-shadow: 0 5px 20px rgba(212, 163, 86, 0.4);
+            transition: 0.3s;
+        }
+
+        .order-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(212, 163, 86, 0.6);
+        }
+
+        .footer-info {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--gold);
+            opacity: 0.7;
+        }
+
+        @media (max-width: 450px) {
+            .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo"><span>М'ясна<br>Лавка</span></div>
-            <div style="color: #d4a356; font-size: 12px; margin-bottom: 15px;">№1 з 19.02.2026 до 26.02.2026</div>
-            <div class="promo-bar">Якість, яку варто спробувати</div>
-        </header>
-        <div class="grid">
-            <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/1546/1546633.png"><div class="price">145 грн</div></div>
-            <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/819/819873.png"><div class="price">180 грн</div></div>
-            <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/4825/4825292.png"><div class="price">105 грн</div></div>
-            <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/7024/7024311.png"><div class="price">210 грн</div></div>
+
+<div class="site-container">
+    <header>
+        <div class="logo-placeholder">
+            <div class="logo-text">М'ЯСНА<br>ЛАВКА</div>
         </div>
-        <footer>
-            <div style="color: #d4a356; font-size: 12px;">www.meat-shop.ua</div>
-            <a href="#" class="btn">Order Now</a>
-            <div style="color: #d4a356; font-size: 12px;">+123-456-789</div>
-        </footer>
+        <div class="date-badge">№1 з 19.02.2026 до 26.02.2026</div>
+        <div class="promo-banner">Якість, яку варто спробувати</div>
+    </header>
+
+    <div class="grid">
+        <div class="item">
+            <div class="image-box"></div>
+            <div class="price-tag">145 грн</div>
+        </div>
+        <div class="item">
+            <div class="image-box"></div>
+            <div class="price-tag">180 грн</div>
+        </div>
+        <div class="item">
+            <div class="discount">-47%</div>
+            <div class="image-box"></div>
+            <div class="price-tag">105 грн</div>
+        </div>
+        <div class="item">
+            <div class="image-box"></div>
+            <div class="price-tag">210 грн</div>
+        </div>
     </div>
+
+    <footer>
+        <a href="#" class="order-button">Order Now</a>
+        <div class="footer-info">
+            <span>www.meat-shop.ua</span>
+            <span>+123-456-789</span>
+        </div>
+    </footer>
+</div>
+
 </body>
 </html>
